@@ -1,0 +1,6 @@
+version: '2'
+services:
+  ehiera:
+    build: .
+    volumes:
+      - ./data:/data
