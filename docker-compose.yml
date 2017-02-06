@@ -1,6 +1,8 @@
 version: '2'
 services:
-  ehiera:
+  secenv:
     build: .
     volumes:
-      - ./data:/data
+      - ./envir:/envir
+      - ./keys:/keys
+      - ./bin:/usr/local/bin

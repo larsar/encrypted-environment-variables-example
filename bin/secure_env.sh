@@ -2,7 +2,7 @@
 
 oper="enc"
 
-usage() { echo "Usage: $0 [-d] [-f <data/app-stage.env>]" 1>&2; exit 1; }
+usage() { echo "Usage: $0 [-d] [-f <filename> in envir dir]" 1>&2; exit 1; }
 
 while getopts "df:k:v:" o; do
     case "${o}" in
@@ -38,8 +38,10 @@ if [ $oper = "enc" ]; then
    if [ -z "${k}" ] || [ -z "${v}" ]; then
        usage
    fi
-   echo "CMD: enc $k=enc($v)"
+   enc_v=`eyaml encrypt -o string -s "\"${v}\""`
+   upper_k=`echo ${k}| awk '{print toupper($0)}'`
+   echo "${upper_k}=${enc_v}" >> ${f}
 else
-   echo "CMD: decr $f"
+   eyaml decrypt -f ${f}
 fi
    
