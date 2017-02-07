@@ -7,6 +7,7 @@ Note: This is just an inspirational example. It's not intended to be a complete 
 
 ### Create key pair
 This will create a key pair and store it the "keys" directory.
+
 docker-compose run --entrypoint eyaml secenv createkeys
 
 ### Add an encrypted variable to an existing envir file
